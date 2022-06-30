@@ -1,0 +1,160 @@
+{
+  "reviewData": [
+    {
+      "title": "Google Reviews",
+      "label": "Growble Digital",
+      "img": "google",
+      "rating": 4.0,
+      "reviewCount": "19,495",
+      "addedCount": 895,
+      "addedTitle": "Reviews added in wall"
+    },
+    {
+      "title": "TrustPilot Reviews",
+      "label": "Growble Digital",
+      "img": "star",
+      "rating": 4.0,
+      "reviewCount": "19,495",
+      "addedCount": 895,
+      "addedTitle": "Reviews added in wall"
+    },
+    {
+      "title": "Facebook Recommendations",
+      "label": "Growble Digital",
+      "img": "facebook",
+      "rating": 4.0,
+      "reviewCount": "19,495",
+      "addedCount": 895,
+      "addedTitle": "Reviews added in wall"
+    },
+    {
+      "title": "testimonial",
+      "label": "Growble Digital",
+      "img": "testimonial",
+      "rating": 4.0,
+      "reviewCount": "19,495",
+      "reqCount": 61,
+      "reqTitle": "Requested",
+      "addedCount": 895,
+      "addedTitle": "Reviews added in wall"
+    }
+  ],
+  "tableData": [
+    {
+      "name": "John Doe",
+      "rating": "4.5",
+      "source": "google"
+    },
+    {
+      "name": "John Doe",
+      "rating": "4.5",
+      "source": "star"
+    },
+    {
+      "name": "John Doe",
+      "rating": "4.5",
+      "source": "twitter"
+    },
+    {
+      "name": "John Doe",
+      "rating": "4.5",
+      "source": "testimonial"
+    },
+    {
+      "name": "John Doe",
+      "rating": "4.5",
+      "source": "google"
+    }
+  ],
+  "testimonialData": [
+    {
+      "name": "John Doe",
+      "service": "Amazon",
+      "rating": 3.6,
+      "date": "April 16, 2021",
+      "desc1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      "desc2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non. Sagittis porta at magnis et quam magna est ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non..."
+    },
+    {
+      "name": "John Doe",
+      "service": "Amazon",
+      "rating": 3.6,
+      "date": "April 16, 2021",
+      "desc1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      "desc2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non. Sagittis porta at magnis et quam magna est ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non..."
+    },
+    {
+      "name": "John Doe",
+      "service": "Amazon",
+      "rating": 3.6,
+      "date": "April 16, 2021",
+      "desc1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      "desc2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non. Sagittis porta at magnis et quam magna est ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non..."
+    }
+  ],
+  "twitterData": [
+    {
+      "name": "Mayilsamy Chinnathambi",
+      "from": "@Mayilsamy",
+      "content": "@Lorem ipsum @dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non. Sagittis porta at magnis et quam magna est ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non...",
+      "likeCount": 121,
+      "date": "12:50 PM Jan 16, 2021"
+    },
+    {
+      "name": "Mayilsamy Chinnathambi",
+      "from": "@Mayilsamy",
+      "content": "@Lorem ipsum @dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non. Sagittis porta at magnis et quam magna est ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non...",
+      "likeCount": 121,
+      "date": "12:50 PM Jan 16, 2021"
+    },
+    {
+      "name": "Mayilsamy Chinnathambi",
+      "from": "@Mayilsamy",
+      "content": "@Lorem ipsum @dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non. Sagittis porta at magnis et quam magna est ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra vel cras amet, malesuada non...",
+      "likeCount": 121,
+      "date": "12:50 PM Jan 16, 2021"
+    }
+  ],
+  "mailInfo": [
+    {
+      "image": "google-icon-lg.png",
+      "mail": "johndoe@twitter.com"
+    },
+    {
+      "image": "twitter-logo-lg.png",
+      "mail": "johndoe@gmail.com"
+    }
+  ],
+  "notificationData": [
+    {
+      "preferences": "New Feedback Received",
+      "provider": "CustomerFeedback",
+      "IsSystemNotificationRequired": false,
+      "IsEmailNotificationRequired": false
+    },
+    {
+      "preferences": "New Testimonial received",
+      "provider": "Testimonial",
+      "IsSystemNotificationRequired": false,
+      "IsEmailNotificationRequired": false
+    },
+    {
+      "preferences": "New GMB Review Received",
+      "provider": "Google",
+      "IsSystemNotificationRequired": false,
+      "IsEmailNotificationRequired": false
+    },
+    {
+      "preferences": "New Facebook Recommendation Received",
+      "provider": "Facebook",
+      "IsSystemNotificationRequired": false,
+      "IsEmailNotificationRequired": false
+    },
+    {
+      "preferences": "New Twitter Mention Received",
+      "provider": "Twitter",
+      "IsSystemNotificationRequired": false,
+      "IsEmailNotificationRequired": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+.dashboard-layout{
+    min-height: 85vh;
+    background-color: #fff;
+    // width: 100%;
+    padding: 10px 25px;
+    margin: 15px 25px;
+    border-radius: 5px;
+}
+
+.data-title, .data-length{
+    font-size: 20px;
+    font-weight: bold;
+    @media(max-width: 768px){
+        font-size: 13px;
+    }
+}
