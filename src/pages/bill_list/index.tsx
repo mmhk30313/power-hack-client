@@ -163,8 +163,8 @@ export default function BillList (props: any) {
                                     onChange={(value: string) => {
                                         setSearchType(value);
                                         setPageObj({page: 1, limit: 10});
+                                        setSearchValue('');
                                         if(!value) {
-                                            setSearchValue('');
                                             dispatch(filter_bills({page: 1, limit: 10}));
                                         }
                                     }}
