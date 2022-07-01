@@ -1,10 +1,14 @@
 import { Fragment, PureComponent } from "react";
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Tooltip } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined, SelectOutlined, DollarOutlined, BankOutlined, LogoutOutlined } from '@ant-design/icons';
+import { 
+    MenuUnfoldOutlined, MenuFoldOutlined, 
+    // UserOutlined, SelectOutlined, LogoutOutlined,
+    DollarOutlined, BankOutlined,  
+} from '@ant-design/icons';
 import './navigations.scss';
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Logout from "./components/logout";
 // const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -53,7 +57,6 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
   
     render() {
         // console.log({key: this.state.key});
-        
         const {children} = this.props;
         const {user} = this.state;
         console.log({user});
@@ -87,8 +90,9 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                         }}
                     >
                         <div className='logo'>
-                            <div className="text-dark font-weight-bold">
-                                <h2 style={{cursor: 'pointer'}} className="text-success m-0"><BankOutlined /></h2>
+                            <div className="text-dark font-weight-bold border border-info bg-light px-2 rounded-circle mx-1">
+                                <h3 style={{cursor: 'pointer'}} className="text-success text-center"><BankOutlined /></h3>
+                                {/* <p className="awesome text-left">Power Hack</p> */}
                             </div>
                             {/* <img className="img-fluid rounded-circle" src={user?.avatar} alt="user" height={35} width={35} /> <span>{user?.name?.match(/\b([A-Z])/g).join('')}</span> */}
                             {/* <UserOutlined className="logo-img" /> <span>MMHK</span> */}
@@ -96,9 +100,7 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                         <Menu
                             mode="inline"
                             defaultSelectedKeys={[this.state.key]}
-                            // defaultOpenKeys={['0']}
                             style={{borderRight: 0 }}
-                            
                         >
                             <Menu.Item key="/" icon={<BankOutlined />}>
                                 <Link to="/" className="link-item">Dashboard</Link>
@@ -115,10 +117,11 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                                 React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                                     className: 'trigger',
                                     onClick: this.toggle,
-                                    
                                 })
                             }
-                            <div></div>
+                            <div className="mt-4">
+                                <p className="awesome text-left">Power Hack</p>
+                            </div>
                             <div>
                             <Tooltip color={"white"} placement="bottomRight" title={
                                 <Fragment>
@@ -153,5 +156,5 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                 
             </Fragment>
         );
-      }
     }
+}

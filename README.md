@@ -25,7 +25,8 @@
 * `yarn dev` or `npm start`
 * The project will run in http://localhost:3000
 
-Live Url: 
+# Live Url: 
+##### https://power-hack.vercel.app/
 ## Server Code:
 #### https://github.com/mmhk30313/power-hack-server
 
