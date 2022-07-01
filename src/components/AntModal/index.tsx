@@ -7,7 +7,7 @@ const AntModal = ({visibleModal, handleCancel, data_title, width, children}: any
         <Modal
             title={data_title || false}
             visible={visibleModal}
-            onCancel={() => handleCancel()}
+            onCancel={() => handleCancel(true)}
             // onOk={() => setVisibleModal(false)}
             footer={null}
             width={width || 740}

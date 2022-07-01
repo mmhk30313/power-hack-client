@@ -24,10 +24,10 @@ const BillForm = (props: any = {}) => {
         handleReject();
     }
 
-    const handleReject = () => {
+    const handleReject = (cancel_flag: boolean = false) => {
         setVisibleModal(false);
         setEditableData(null);
-        handleCancel(true);
+        handleCancel(cancel_flag);
         form.resetFields();
     }
     return (

@@ -113,16 +113,16 @@ export default function BillList (props: any) {
                     duration: 2,
                 });
             }
+            setIsAddState(false);
+            setIsEditBill(false);
+            setBillId(null);
+            setModalVisible(false);
+            setLoading(true);
+            dispatch(filter_bills(pageObj));
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000);
         }
-        setIsAddState(false);
-        setIsEditBill(false);
-        setBillId(null);
-        setModalVisible(false);
-        setLoading(true);
-        dispatch(filter_bills(pageObj));
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
     }
 
     const handleDeleteBill = (bill_id: string) => {
