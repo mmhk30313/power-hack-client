@@ -98,19 +98,21 @@ export default function BillList (props: any) {
         setModalVisible(true);
     }
     
-    const handleCancel = () => {
-        if(bill_id){
-            notification.success({
-                message: 'Success',
-                description: 'Bill has been updated successfully',
-                duration: 2,
-            });
-        }else{
-            notification.success({
-                message: 'Success',
-                description: 'Bill has been added successfully',
-                duration: 2,
-            });
+    const handleCancel = (cancel_flag: boolean = false) => {
+        if(!cancel_flag){
+            if(bill_id){
+                notification.success({
+                    message: 'Success',
+                    description: 'Bill has been updated successfully',
+                    duration: 2,
+                });
+            }else{
+                notification.success({
+                    message: 'Success',
+                    description: 'Bill has been added successfully',
+                    duration: 2,
+                });
+            }
         }
         setIsAddState(false);
         setIsEditBill(false);

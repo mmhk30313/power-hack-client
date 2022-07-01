@@ -27,7 +27,7 @@ const BillForm = (props: any = {}) => {
     const handleReject = () => {
         setVisibleModal(false);
         setEditableData(null);
-        handleCancel();
+        handleCancel(true);
         form.resetFields();
     }
     return (
