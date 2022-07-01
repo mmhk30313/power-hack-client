@@ -21,10 +21,10 @@ const initial_state = {
 };
 
 export default (state = initial_state, action: any) => {
-    // console.log({action});
+    console.log({action});
     
     switch (action.type) {
-        case  logged_in_request:
+        case logged_in_request:
             return {
                 ...state,
                 is_logged_in: false,
@@ -64,12 +64,14 @@ export default (state = initial_state, action: any) => {
         case signed_up_failure:
             return {
                 is_logged_in: false,
+                ...action?.payload,
             };
         case logged_in_failure:
             return {
                 is_logged_in: false,
+                ...action?.payload,
             }
-        case logged_out_failure:
+        case logged_out_failure || 'error_clear':
             return {
                 full_name: "",
                 email: "",

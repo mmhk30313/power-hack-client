@@ -56,7 +56,7 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
         
         const {children} = this.props;
         const {user} = this.state;
-        // console.log({user});
+        console.log({user});
         const buildAcronym = (str = '') => {
             
             const strArr = str.split(' ');
@@ -131,7 +131,7 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                                     style={{fontWeight: 500, cursor: 'pointer'}} 
                                     className="border border-info rounded-circle bg-light m-0 p-2 text-capitalize"
                                 >
-                                    {buildAcronym(this.state?.user?.full_name || "Md. Mehedi Hasan Khan")}
+                                    {buildAcronym(user?.full_name || "Md. Mehedi Hasan Khan")}
                                 </small>
                             </Tooltip>
                             </div>
