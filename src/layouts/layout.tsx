@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pad, btnRequest, click }) => 
     const [padding, setpadding] = useState(pad);
     const {login_logout_reducer} = useSelector((state: any) => state);
     // console.log({login_logout_reducer});
-    const {name, email, imageUrl: avatar} = login_logout_reducer;
+    const {name, email, avatar: avatar, gender} = login_logout_reducer;
     useEffect(() => {
         setpadding(pad)
 

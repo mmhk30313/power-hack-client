@@ -1,45 +1,44 @@
 import React, { Fragment, useEffect, useState } from 'react';
 // import google from '../../assets/icons/google.png';
 import { useHistory, useLocation } from 'react-router';
-import { set_logged_out, set_logged_user } from '../../services/actions/login_logout_action';
-import { useDispatch } from 'react-redux';
+import { login_user, sign_up} from '../../services/actions/login_logout_action';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Row, Col, Input, Select, Button, Alert } from 'antd';
 
 const Login = () => {
     const [signUp, setSignUp] = useState(true);
-    const [errorMessage, setErrorMessage] = useState('Something went wrong');
+    const [errorMessage, setErrorMessage] = useState('');
     const [form] = Form.useForm();
     const history = useHistory();
     const location = useLocation();
     const dispatch = useDispatch();
-
-    const handleResponseGoogle = ({res, status, message}) => {
-        console.log("Google Response: ", res);
-        const {from} = location.state || { from: { pathname: "/"}};
-        if(res){
-            if(status){
-                // login function call for redux implement
-                // set_logged_user(res?.profileObj);
-                dispatch(set_logged_user(res?.profileObj));
-                // dispatch(set_logged_out());
-
-                history.replace(from);
-                console.log("Logged In message", {message});
-            }else{
-                console.log({message});
-            }
+    const { login_logout_reducer } = useSelector(state => state);
+    const { is_logged_in, full_name, email } = login_logout_reducer;
+    
+    useEffect(() => {
+        if (is_logged_in) {
+            // history.replace(from);
+            history.push('/');
         }
-    }
-
+    }, [is_logged_in]);
+    
     const handleLoginSignUpState = (value) => {
         setSignUp(value);
         form.resetFields();
     }
 
-    const handleLogin = (e) => {
-        console.log("Login Button Clicked: ", e);
-        // e.preventDefault();
-        // history.push("/");
+    const handleSignUpLogin = (e) => {
+        const {from} = location.state || { from: { pathname: "/"}};
+        // form.preventDefault();
+        console.log({e});
+        if(signUp){
+            dispatch(sign_up(e));
+        }else{
+            const dataObj = {email: e.login_email, password: e.login_password};
+            dispatch(login_user(dataObj));
+        }
+        // form.resetFields();
+        history.push(from);
     }
 
     return (
@@ -53,7 +52,7 @@ const Login = () => {
                         layout="vertical"
                         name={"login-sign-up-form"}
                         initialValues={{ remember: true }}
-                        onFinish={handleLogin}
+                        onFinish={handleSignUpLogin}
                         id={"login-sign-up-form"}
                     >
                         <h3 className='text-center text-info'>
@@ -211,7 +210,7 @@ const Login = () => {
                                 >
                                     <Form.Item
                                         label="Email"
-                                        name="login-email"
+                                        name="login_email"
                                         rules={[{ 
                                             required: true, 
                                             message: 'Please input your email!',
@@ -231,7 +230,7 @@ const Login = () => {
                                 >
                                     <Form.Item
                                         label="Password"
-                                        name="login-password"
+                                        name="login_password"
                                         rules={[{
                                             required: true, 
                                             message: 'Please input your valid password length[1-15]!',

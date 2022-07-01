@@ -11,7 +11,7 @@ const initial_state = {
 }
 
 export default (state = initial_state, action: any) => {
-    console.log({action});
+    // console.log({action});
     
     switch (action.type) {
         case user_bills_request:

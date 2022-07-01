@@ -1,7 +1,7 @@
 import { Card, Col, Row } from 'antd';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { get_user_bills_details } from '../../services/actions/dashboard_action';
+import { get_users_bills_details } from '../../services/actions/dashboard_action';
 import './dashboard.scss';
 const Dashboard = () => {
     const {
@@ -10,7 +10,7 @@ const Dashboard = () => {
     } = useSelector((state: any) => state.dashboard_reducer);
     const dispatch: any = useDispatch();
     useEffect(() => {
-        dispatch(get_user_bills_details())
+        dispatch(get_users_bills_details())
     }, []);
     // console.log({dashboard_data});
     
@@ -39,7 +39,6 @@ const Dashboard = () => {
                             )
                         })
                     }
-                    
                 </Row>
             </Card>
         </React.Fragment>

@@ -124,7 +124,7 @@ export default function BillList (props: any) {
     }
 
     const handleDeleteBill = (bill_id: string) => {
-        console.log(bill_id);
+        // console.log(bill_id);
         dispatch(delete_bill(bill_id));
         handleCancel();
     }

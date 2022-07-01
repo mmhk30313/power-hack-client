@@ -52,7 +52,7 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
     };
   
     render() {
-        console.log({key: this.state.key});
+        // console.log({key: this.state.key});
         
         const {children} = this.props;
         const {user} = this.state;
@@ -106,9 +106,6 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                             <Menu.Item key="/bill-list" icon={<DollarOutlined />}>
                                 <Link to='/bill-list'>Bill Management</Link>    
                             </Menu.Item>
-                            {/* <Menu.Item key="/posts" icon={<SelectOutlined />}>
-                                <Link to='/posts'>Posts</Link>
-                            </Menu.Item> */}
                             
                         </Menu>
                     </Sider>
@@ -125,15 +122,17 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                             <div>
                             <Tooltip color={"white"} placement="bottomRight" title={
                                 <Fragment>
-                                    {/* <Link to='/' className="text-dark font-weight-bold"> */}
-                                        {/* <h5 className="m-0"><BankOutlined /> Account</h5> */}
-                                    {/* </Link> */}
                                     <div className="text-dark font-weight-bold">
                                         <Logout/>
                                     </div>
                                 </Fragment>
                             }>
-                                <small style={{fontWeight: 500, cursor: 'pointer'}} className="border border-info rounded-circle bg-light m-0 p-2 text-capitalize">{buildAcronym(this.state?.user?.full_name || "Md. Mehedi Hasan Khan")}</small>
+                                <small 
+                                    style={{fontWeight: 500, cursor: 'pointer'}} 
+                                    className="border border-info rounded-circle bg-light m-0 p-2 text-capitalize"
+                                >
+                                    {buildAcronym(this.state?.user?.full_name || "Md. Mehedi Hasan Khan")}
+                                </small>
                             </Tooltip>
                             </div>
                         </Header>
@@ -142,7 +141,6 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                             style={{
                                 padding: "10px 10px 0 10px",
                                 margin: 0,
-                                // minHeight: 580,
                             }}
                         >
                             {

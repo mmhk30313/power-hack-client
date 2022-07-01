@@ -31,20 +31,24 @@ export const request = (link: String, params: any) => {let headers: any = {
         ...fetchConfig,
         data: params?.body,
     });
-    console.log({fetchConfig});
+    // console.log({fetchConfig});
     // params?.method === 'post' && ( fetchConfig.headers);
     // console.log({fetchConfig});
     
     // console.log({url});
     
     return axios(fetchConfig)
-        .then((response: { data: any; }) => {
-            const { data } = response;
-            return data || {status: false, messages: "No data found"};
-        })
-        .catch((error: any) => {
-            // console.log({error});
-            return error;
-        });
+    .then((response: { data: any; }) => {
+        const { data } = response;
+        // console.log({response});
+        
+        return data || {status: false, messages: "No data found"};
+    }).catch(
+        function (error: any) {
+          console.log('Show error notification!')
+          return Promise.reject(error);
+        }
+    );
+        
     
 }

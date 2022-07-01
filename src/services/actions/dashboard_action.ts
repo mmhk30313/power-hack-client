@@ -5,9 +5,9 @@ import {
     user_bills_failure,
 } from "../types";
 
-export const get_user_bills_details = () => {
-    console.log("get_user_bills_details");
-    
+// All users and bills for summerizing in dashboard
+export const get_users_bills_details = () => {
+    // console.log("get_users_bills_details");
     return async(dispatch: any) => {
         try {
             dispatch({
@@ -15,10 +15,9 @@ export const get_user_bills_details = () => {
             });
 
             const user_res = await get_users_details();
-            console.log({user_res});
+            // console.log({user_res});
             const bill_res = await get_bills_details(1, 10);
-            console.log({bill_res});
-            
+            // console.log({bill_res});
             
             dispatch({
                 type: user_bills_success,

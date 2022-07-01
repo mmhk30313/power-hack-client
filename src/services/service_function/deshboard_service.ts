@@ -1,8 +1,6 @@
 import { request } from "../request"
 
-export const get_users_details = () => {
-    console.log("get_users_details");
-    
+export const get_users_details = () => {    
     return request("/api/user/all", null);
 }
 

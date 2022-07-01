@@ -14,7 +14,7 @@ const BillForm = (props: any = {}) => {
     } = props;
     const [form] = Form.useForm();
     const handleSubmit = (values: any) => {
-        console.log(values);
+        // console.log(values);
         if(editableData?.bill_id) {
             dispatch(edit_bill({...values, bill_id: editableData?.bill_id}));
         }else{

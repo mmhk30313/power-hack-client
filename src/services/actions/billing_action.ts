@@ -14,6 +14,7 @@ import {
     delete_bill_failure,
 } from "../types";
 
+// Search and filter with pagination for bills
 export const filter_bills = (filter_obj: any) => {
     console.log({filter_obj});
     
@@ -24,7 +25,7 @@ export const filter_bills = (filter_obj: any) => {
             });
 
             const bill_res = await get_bills(filter_obj);
-            console.log({bill_res});
+            // console.log({bill_res});
             if(bill_res?.status){
                 dispatch({
                     type: filter_bills_success,
@@ -45,9 +46,8 @@ export const filter_bills = (filter_obj: any) => {
         
 }
 
+// Create Bill
 export const add_bill = (bill_obj: any) => {
-    console.log({bill_obj});
-    
     return async(dispatch: any) => {
         try {
             dispatch({
@@ -76,9 +76,8 @@ export const add_bill = (bill_obj: any) => {
         
 }
 
+// Update Bill
 export const edit_bill = (bill_obj: any) => {
-    console.log({bill_obj});
-    
     return async(dispatch: any) => {
         try {
             dispatch({
@@ -107,19 +106,20 @@ export const edit_bill = (bill_obj: any) => {
         
 }
 
+// Delete Bill
 export const delete_bill = (bill_id: string) => {
     
     return async(dispatch: any) => {
         try {
             dispatch({
-                type: filter_bills_request,
+                type: delete_bill_request,
             });
 
             const bill_res = await remove_bill(bill_id);
-            console.log({bill_res});
+            // console.log({bill_res});
             if(bill_res?.status){
                 dispatch({
-                    type: filter_bills_success,
+                    type: delete_bill_success,
                     payload: {...bill_res?.data, message: bill_res?.message || "Bill deleted successfully"},
                 });
             }else{
@@ -128,7 +128,7 @@ export const delete_bill = (bill_id: string) => {
             
         } catch (error: any) {
             dispatch({
-                type: filter_bills_failure,
+                type: delete_bill_failure,
                 payload: {error: error.message},
             });
         }
