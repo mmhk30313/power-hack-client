@@ -9,7 +9,7 @@ import BillForm from './components/BillForm';
 export default function BillList (props: any) {
     const {billing_reducer} = useSelector((state: any) => state);
     const { is_loading, billing_list, billing_data_length, total_paid_amount, message, error} = billing_reducer;
-    console.log({billing_list});
+    // console.log({billing_list});
     
     const dispatch: any = useDispatch();
     const [isAddBill, setIsAddState] = React.useState(false);
@@ -48,11 +48,11 @@ export default function BillList (props: any) {
                 key: 'phone',
             },
             {
-                title: 'Paid Amount',
+                title: 'Paid Amount (BDT)',
                 dataIndex: 'paid_amount',
                 key: 'paid_amount',
                 align: 'center',
-                render: (text: any) => <span>{text} BDT</span>,
+                render: (text: any) => <span>{text}</span>,
             },
             {
                 title: "Action",
@@ -150,7 +150,7 @@ export default function BillList (props: any) {
             }
             <Card
                 title={<h6>Bill List</h6>}
-                extra={<h6>Paid Total: {total_paid_amount}</h6>}
+                extra={<h6>Paid Total: {total_paid_amount} BDT</h6>}
                 bordered={false}
             >
                 <Table
