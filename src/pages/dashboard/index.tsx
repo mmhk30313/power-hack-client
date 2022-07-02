@@ -7,18 +7,26 @@ const Dashboard = () => {
     const {
         is_loading,
         dashboard_data,
+        user_length,
+        bill_length,
     } = useSelector((state: any) => state.dashboard_reducer);
     const dispatch: any = useDispatch();
+    const [loading, setLoading] = React.useState(false);
     useEffect(() => {
-        dispatch(get_users_bills_details())
-    }, []);
-    // console.log({dashboard_data});
+        console.log("Loading Dashboard");
+        setLoading(true);
+        dispatch(get_users_bills_details());
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    }, [user_length, bill_length]);
+    // console.log({user_length, bill_length, is_loading});
     
     return (
         <React.Fragment>
             <Card 
                 title={<h6>Dashboard</h6>}
-                loading={is_loading && !dashboard_data?.length}
+                loading={loading && !dashboard_data?.length}
                 bordered={false}
             >
                 <Row gutter={32}>
@@ -28,7 +36,7 @@ const Dashboard = () => {
                                 <Col key={index} md={12} span={8} xs={24} lg={8}>
                                     <Card
                                         bordered={true}
-                                        loading={is_loading}
+                                        loading={loading}
                                         // loading={is_loading}
                                         className="bg-light p-2 my-3 card-style"
                                     >

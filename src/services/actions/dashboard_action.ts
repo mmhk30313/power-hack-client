@@ -18,13 +18,13 @@ export const get_users_bills_details = () => {
             // console.log({user_res});
             const bill_res = await get_bills_details(1, 10);
             // console.log({bill_res});
-            
+            const data: any[] = [
+                {title: "Users", length: user_res?.data?.length,},
+                {title: "Bills", length: bill_res?.data?.billing_data_length,}, 
+            ]
             dispatch({
                 type: user_bills_success,
-                payload: [
-                    {title: "Users", length: user_res?.data?.length,},
-                    {title: "Bills", length: bill_res?.data?.billing_data_length,}, 
-                ],
+                payload: {data, user_length: user_res?.data?.length, bill_length: bill_res?.data?.billing_data_length},
             });
                 
             

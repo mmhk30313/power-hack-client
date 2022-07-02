@@ -116,7 +116,7 @@ const BillForm = (props: any = {}) => {
                             </Form.Item>
                             <Form.Item className="mt-2">
                                 <Button type="primary" htmlType="submit" className="w-100">
-                                    {editableData ? "Update" : "Submit"}
+                                    {editableData ? "UPDATE" : "CREATE"}
                                 </Button>
                             </Form.Item>
                         </Col>

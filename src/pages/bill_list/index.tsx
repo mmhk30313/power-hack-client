@@ -14,16 +14,17 @@ export default function BillList (props: any) {
     const dispatch: any = useDispatch();
     const [isAddBill, setIsAddState] = React.useState(false);
     const [isEditBill, setIsEditBill] = React.useState(false);
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = React.useState(false);
     const [columns, setColumns]:any = React.useState([]);
     const [bill_id, setBillId] = React.useState(null);
     const [searchType, setSearchType] = React.useState('');
     const [searchValue, setSearchValue] = React.useState('');
     const [pageObj, setPageObj] = React.useState({page: 1, limit: 10});
     const [modalVisible, setModalVisible] = React.useState(false);
-    const [editableData, setEditableData] = React.useState({});
+    const [editableData, setEditableData] = React.useState(null);
 
     useEffect(() => {
+        // setLoading(true);
         dispatch(filter_bills(pageObj));
         const columns = [
             {
@@ -61,7 +62,6 @@ export default function BillList (props: any) {
                     <span>
                         <a className='text-primary'
                             onClick={() => {
-                                setIsEditBill(true);
                                 setEditableData(record);
                                 handleAddEditBill({flag: "edit", bill_id: record.bill_id});
                             }}
@@ -84,7 +84,7 @@ export default function BillList (props: any) {
         setTimeout(() => {
             setLoading(false);
         }, 1500);
-    }, [billing_list]);
+    }, [billing_data_length]);
     
 
     const handleAddEditBill = (value: any) => {
@@ -124,7 +124,7 @@ export default function BillList (props: any) {
         setBillId(null);
         setModalVisible(false);
         setIsAddState(false);
-        setIsEditBill(false);
+        setEditableData(null);
     }
 
     const handleDeleteBill = (bill_id: string) => {
