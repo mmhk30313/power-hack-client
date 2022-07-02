@@ -32,7 +32,7 @@ export default function BillList (props: any) {
                 key: 'bill_id',
             },
             {
-                title: 'Full Name',
+                title: 'Name',
                 dataIndex: 'full_name',
                 key: 'full_name',
                 render: (text: any) => <a>{text}</a>,
@@ -154,51 +154,61 @@ export default function BillList (props: any) {
                 bordered={false}
             >
                 <Table
-                    title={() => 
-                        <Row gutter={32}>
-                            <Col span={24} xs={24}>
-                                <p>Search</p>
-                            </Col>
-                            <Col span={6} md={7} xs={24}>
-                                <Select style={{cursor: 'pointer', width: 200}} placeholder="Select an option" className='' 
-                                    allowClear showSearch 
-                                    onChange={(value: string) => {
-                                        setSearchType(value);
-                                        setPageObj({page: 1, limit: 10});
-                                        setSearchValue('');
-                                        if(!value) {
-                                            dispatch(filter_bills({page: 1, limit: 10}));
-                                        }
-                                    }}
-                                >
-                                    <Select.Option value="full_name">Full Name</Select.Option>
-                                    <Select.Option value="email">Email</Select.Option>
-                                    <Select.Option value="phone">Phone</Select.Option>
-                                </Select>
-                            </Col>
-                            <Col span={9} md={9} xs={24}>
-                                {
-                                    searchType 
-                                    && <Input 
-                                        style={{width: "fit-content"}}
-                                        placeholder={`Search by ${searchType}`}
-                                        onChange={(e: any) => {
-                                            setPageObj({page: 1, limit: 10});
-                                            handleSearch(e.target.value);
-                                            setSearchValue(e.target.value);
-                                        }}
-                                    />
-                                }
-                            </Col>
-                            <Col span={7} md={7} xs={24} className="mx-3 text-end text-xs-start">
-                                <Button type="primary" 
-                                    onClick={() => handleAddEditBill({flag: "add"})}
-                                >
-                                    Add New Bill
-                                </Button>
-                            </Col>
-                        </Row>
+                    title={() =>
+                        <Card className='p-0 bg-light'>
+                            <Row gutter={32}>
+                                <Col span={21} lg={21} md={24} xs={24}>
+                                    <Row gutter={32}>
+                                        <Col span={2} lg={2} md={3} xs={24}>
+                                            <p>Search</p>
+                                        </Col>
+                                        <Col span={6} lg={6} md={10} xs={24}>
+                                            <Select 
+                                                style={{cursor: 'pointer', width: 182}} 
+                                                placeholder="Select an option" 
+                                                className='my-1' 
+                                                allowClear showSearch 
+                                                onChange={(value: string) => {
+                                                    setSearchType(value);
+                                                    setPageObj({page: 1, limit: 10});
+                                                    setSearchValue('');
+                                                    if(!value) {
+                                                        dispatch(filter_bills({page: 1, limit: 10}));
+                                                    }
+                                                }}
+                                            >
+                                                <Select.Option value="full_name">Full Name</Select.Option>
+                                                <Select.Option value="email">Email</Select.Option>
+                                                <Select.Option value="phone">Phone</Select.Option>
+                                            </Select>
+                                        </Col>
+                                        <Col span={7} lg={7} md={8} xs={24} className='my-1'>
+                                            {
+                                                searchType 
+                                                && <Input 
+                                                    style={{width: "fit-content"}}
+                                                    placeholder={`Search by ${searchType}`}
+                                                    onChange={(e: any) => {
+                                                        setPageObj({page: 1, limit: 10});
+                                                        handleSearch(e.target.value);
+                                                        setSearchValue(e.target.value);
+                                                    }}
+                                                />
+                                            }
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col span={3} lg={3} md={4} xs={24} className="my-1">
+                                    <Button type="primary" className=''
+                                        onClick={() => handleAddEditBill({flag: "add"})}
+                                    >
+                                        Add New Bill
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </Card> 
                     }
+                    style={{height: 350}}
                     columns={columns}
                     dataSource={billing_list}
                     loading={loading}

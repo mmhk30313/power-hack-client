@@ -139,13 +139,7 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                             </Tooltip>
                             </div>
                         </Header>
-                        <Content
-                            className="content-layout-background"
-                            style={{
-                                padding: "10px 10px 0 10px",
-                                margin: 0,
-                            }}
-                        >
+                        <Content className="content-layout-background">
                             {
                                 children
                             }
