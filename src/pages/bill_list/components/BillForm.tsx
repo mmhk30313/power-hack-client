@@ -10,7 +10,7 @@ const BillForm = (props: any = {}) => {
         editableData, setEditableData,
         handleCancel,
         visibleModal, setVisibleModal, 
-        data_title
+        modal_title
     } = props;
     const [form] = Form.useForm();
     const handleSubmit = (values: any) => {
@@ -36,7 +36,7 @@ const BillForm = (props: any = {}) => {
                 handleCancel={handleReject} 
                 visibleModal={visibleModal} 
                 setVisibleModal={setVisibleModal} 
-                data_title={data_title}
+                modal_title={modal_title}
             >
                 <Form
                     form={form}

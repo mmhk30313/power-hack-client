@@ -91,8 +91,10 @@ export default function BillList (props: any) {
         if (value?.flag === 'add') {
             // ({isAddBill: true});
             setBillId(null);
+            setIsAddState(true);
         } else {
             // this.setState({isEditBill: true});
+            setIsAddState(false);
             setBillId(value?.bill_id);
         }
         setModalVisible(true);
@@ -113,16 +115,16 @@ export default function BillList (props: any) {
                     duration: 2,
                 });
             }
-            setIsAddState(false);
-            setIsEditBill(false);
-            setBillId(null);
-            setModalVisible(false);
             setLoading(true);
             dispatch(filter_bills(pageObj));
             setTimeout(() => {
                 setLoading(false);
             }, 1000);
         }
+        setBillId(null);
+        setModalVisible(false);
+        setIsAddState(false);
+        setIsEditBill(false);
     }
 
     const handleDeleteBill = (bill_id: string) => {
@@ -143,7 +145,7 @@ export default function BillList (props: any) {
                     visibleModal={modalVisible} 
                     setVisibleModal={setModalVisible}
                     handleCancel={handleCancel}
-                    data_title={isAddBill ? "Create A New Bill" : "Update A Bill"} 
+                    modal_title={isAddBill ? "Create A New Bill" : "Update A Bill"} 
                     editableData={editableData} setEditableData={setEditableData} 
                 />
                 : null
@@ -211,7 +213,7 @@ export default function BillList (props: any) {
                     style={{height: 350}}
                     columns={columns}
                     dataSource={billing_list}
-                    loading={loading}
+                    loading={loading || !billing_list?.length}
                     bordered
                     rowKey={(record: any) => record.bill_id}
                     pagination={{
