@@ -84,7 +84,7 @@ export default function BillList (props: any) {
         setTimeout(() => {
             setLoading(false);
         }, 1500);
-    }, [""]);
+    }, [billing_list]);
     
 
     const handleAddEditBill = (value: any) => {
