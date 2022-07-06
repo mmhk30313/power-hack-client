@@ -10,10 +10,9 @@ export default function BillList (props: any) {
     const {billing_reducer} = useSelector((state: any) => state);
     const { is_loading, billing_list, billing_data_length, total_paid_amount, message, error} = billing_reducer;
     // console.log({billing_list});
-    
     const dispatch: any = useDispatch();
     const [isAddBill, setIsAddState] = React.useState(false);
-    const [isEditBill, setIsEditBill] = React.useState(false);
+    // const [isEditBill, setIsEditBill] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [columns, setColumns]:any = React.useState([]);
     const [bill_id, setBillId] = React.useState(null);
@@ -84,7 +83,7 @@ export default function BillList (props: any) {
         setTimeout(() => {
             setLoading(false);
         }, 1500);
-    }, [billing_data_length]);
+    }, [""]);
     
 
     const handleAddEditBill = (value: any) => {
@@ -135,8 +134,64 @@ export default function BillList (props: any) {
 
     const handleSearch = (value: any) => {
         dispatch(filter_bills({...pageObj, [`${searchType}`]: value}));
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     }
 
+    const TableSearchCard = <Card className='p-0 bg-light'>
+                        <Row gutter={32}>
+                            <Col span={21} lg={21} md={24} xs={24}>
+                                <Row gutter={32}>
+                                    <Col span={2} lg={2} md={3} xs={24}>
+                                        <p className='pt-2'>Search</p>
+                                    </Col>
+                                    <Col span={6} lg={6} md={10} xs={24}>
+                                        <Select 
+                                            style={{cursor: 'pointer'}}
+                                            placeholder="Select an option" 
+                                            className='select-search' 
+                                            allowClear showSearch 
+                                            onChange={(value: string) => {
+                                                setSearchType(value);
+                                                setPageObj({page: 1, limit: 10});
+                                                setSearchValue('');
+                                                if(!value) {
+                                                    dispatch(filter_bills({page: 1, limit: 10}));
+                                                }
+                                            }}
+                                        >
+                                            <Select.Option value="full_name">Full Name</Select.Option>
+                                            <Select.Option value="email">Email</Select.Option>
+                                            <Select.Option value="phone">Phone</Select.Option>
+                                        </Select>
+                                    </Col>
+                                    <Col span={7} lg={7} md={8} xs={24} className='my-1'>
+                                        {
+                                            searchType 
+                                            && <Input 
+                                                // style={{width: "fit-content"}}
+                                                placeholder={`Search by ${searchType}`}
+                                                onChange={(e: any) => {
+                                                    setLoading(true);
+                                                    setPageObj({page: 1, limit: 10});
+                                                    handleSearch(e.target.value);
+                                                    setSearchValue(e.target.value);
+                                                }}
+                                            />
+                                        }
+                                    </Col>
+                                </Row>
+                            </Col>
+                            <Col span={3} lg={3} md={4} xs={24} className="my-1">
+                                <Button type="primary" className=''
+                                    onClick={() => handleAddEditBill({flag: "add"})}
+                                >
+                                    Add New Bill
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Card>
     return (
         <React.Fragment>
             {
@@ -150,70 +205,28 @@ export default function BillList (props: any) {
                 />
                 : null
             }
+
+            <div className='table-search-card-mobile'>
+                {
+                    TableSearchCard
+                }
+            </div>
+
             <Card
                 title={<h6>Bill List</h6>}
                 extra={<h6>Paid Total: {total_paid_amount} BDT</h6>}
                 bordered={false}
             >
                 <Table
-                    title={() =>
-                        <Card className='p-0 bg-light'>
-                            <Row gutter={32}>
-                                <Col span={21} lg={21} md={24} xs={24}>
-                                    <Row gutter={32}>
-                                        <Col span={2} lg={2} md={3} xs={24}>
-                                            <p>Search</p>
-                                        </Col>
-                                        <Col span={6} lg={6} md={10} xs={24}>
-                                            <Select 
-                                                style={{cursor: 'pointer', width: 182}} 
-                                                placeholder="Select an option" 
-                                                className='my-1' 
-                                                allowClear showSearch 
-                                                onChange={(value: string) => {
-                                                    setSearchType(value);
-                                                    setPageObj({page: 1, limit: 10});
-                                                    setSearchValue('');
-                                                    if(!value) {
-                                                        dispatch(filter_bills({page: 1, limit: 10}));
-                                                    }
-                                                }}
-                                            >
-                                                <Select.Option value="full_name">Full Name</Select.Option>
-                                                <Select.Option value="email">Email</Select.Option>
-                                                <Select.Option value="phone">Phone</Select.Option>
-                                            </Select>
-                                        </Col>
-                                        <Col span={7} lg={7} md={8} xs={24} className='my-1'>
-                                            {
-                                                searchType 
-                                                && <Input 
-                                                    style={{width: "fit-content"}}
-                                                    placeholder={`Search by ${searchType}`}
-                                                    onChange={(e: any) => {
-                                                        setPageObj({page: 1, limit: 10});
-                                                        handleSearch(e.target.value);
-                                                        setSearchValue(e.target.value);
-                                                    }}
-                                                />
-                                            }
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col span={3} lg={3} md={4} xs={24} className="my-1">
-                                    <Button type="primary" className=''
-                                        onClick={() => handleAddEditBill({flag: "add"})}
-                                    >
-                                        Add New Bill
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Card> 
-                    }
-                    style={{height: 350}}
+                    title={() => <div className='table-search-card-not-mobile'>
+                        {
+                            TableSearchCard
+                        }
+                    </div>}
+                    // style={{height: 350}}
                     columns={columns}
                     dataSource={billing_list}
-                    loading={loading || !billing_list?.length}
+                    loading={loading}
                     bordered
                     rowKey={(record: any) => record.bill_id}
                     pagination={{
@@ -237,7 +250,7 @@ export default function BillList (props: any) {
                         position: ['bottomCenter'],
                         showTotal: (total: any) => `Total ${total} Bills`,
                     }}
-                    scroll={{ x: 550, y: 300 }}
+                    scroll={{ x: 550, y: 280 }}
                 />
             </Card>
         </React.Fragment>

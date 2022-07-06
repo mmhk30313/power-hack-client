@@ -20,8 +20,11 @@ const Logout = () => {
     }
     return (
         <React.Fragment>
-            <span>
-                <span style={{cursor: 'pointer'}} onClick={() => handleLogout()} className="m-0"><LogoutOutlined /> Logout</span>
+            <span onClick={() => handleLogout()}
+                style={{cursor: 'pointer'}} 
+                className="m-0 d-flex justify-content-around align-items-center"
+            >
+                <LogoutOutlined /> <span>Logout</span>
             </span>
         </React.Fragment>
     );

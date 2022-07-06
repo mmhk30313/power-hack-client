@@ -19,12 +19,14 @@ const Login = () => {
         const {from} = location.state || { from: { pathname: "/"}};
         if (is_logged_in) {
             history.replace(from);
-            notification.success({
-                message: 'Success',
-                description: message,
-                placement: 'topRight',
-                duration: 1,
-            });
+            if(message){
+                notification.success({
+                    message: 'Success',
+                    description: message,
+                    placement: 'topRight',
+                    duration: 1,
+                });
+            }
             // history.push('/');
         }
         if(!is_logged_in && error){
@@ -60,7 +62,7 @@ const Login = () => {
     // console.log({signUp, is_logged_in, message, error});
     return (
         <React.Fragment>
-            <div className='d-flex justify-content-center align-items-center' style={{paddingTop: 100}}>
+            <div className='d-flex justify-content-center align-items-center login-form'>
                 <div style={{width: "520px", overflow: 'hidden' }} className='rounded shadow bg-light p-4'>
                     <div className='d-flex justify-content-center align-items-center mt-1'>
                         <Spin spinning={loading} delay={500}>

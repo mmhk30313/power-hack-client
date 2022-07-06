@@ -1,9 +1,10 @@
 import { Fragment, PureComponent } from "react";
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Tooltip } from 'antd';
+import { Card, Layout, Menu, Tooltip } from 'antd';
 import { 
     MenuUnfoldOutlined, MenuFoldOutlined, 
-    // UserOutlined, SelectOutlined, LogoutOutlined,
+    UserOutlined, 
+    // SelectOutlined, LogoutOutlined,
     DollarOutlined, BankOutlined,  
 } from '@ant-design/icons';
 import './navigations.scss';
@@ -54,6 +55,8 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
         collapsed: !this.state.collapsed,
       });
     };
+
+    
   
     render() {
         // console.log({key: this.state.key});
@@ -83,7 +86,7 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                         collapsed={this.state.collapsed}
                         className="site-layout-background"
                         breakpoint="lg"
-                        collapsedWidth="80"
+                        collapsedWidth="50"
                         onBreakpoint={(broken) => {
                             // console.log({broken});
                             this.setState({collapsed: broken})
@@ -91,7 +94,7 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                     >
                         <div className='logo'>
                             <div className="text-dark font-weight-bold border border-info bg-light px-2 rounded-circle mx-1">
-                                <h3 style={{cursor: 'pointer'}} className="text-success text-center"><BankOutlined /></h3>
+                                <h5 style={{cursor: 'pointer'}} className="text-success text-center"><BankOutlined /></h5>
                                 {/* <p className="awesome text-left">Power Hack</p> */}
                             </div>
                             {/* <img className="img-fluid rounded-circle" src={user?.avatar} alt="user" height={35} width={35} /> <span>{user?.name?.match(/\b([A-Z])/g).join('')}</span> */}
@@ -123,13 +126,23 @@ export default class DashNavigation extends PureComponent<MyProps, MyState> {
                                 <p className="awesome text-left">Power Hack</p>
                             </div>
                             <div>
-                            <Tooltip color={"white"} placement="bottomRight" title={
-                                <Fragment>
-                                    <div className="text-dark font-weight-bold">
-                                        <Logout/>
+                            <Tooltip overlayInnerStyle={{width: '140px'}} color={"white"} placement="bottomRight" 
+                                title={
+                                    <div className="px-1">
+                                        <div className="text-dark font-weight-bold border-bottom w-100 px-3 pb-1">
+                                            <Logout/>
+                                        </div>
+                                        <div className="text-dark font-weight-bold border-bottom w-100 px-3 pb-1">
+                                            <span
+                                                style={{cursor: 'pointer'}} 
+                                                className="d-flex justify-content-around align-items-center"
+                                            >
+                                                <UserOutlined/> <span className="ml-2">Account</span>
+                                            </span>
+                                        </div>
                                     </div>
-                                </Fragment>
-                            }>
+                                }
+                            >
                                 <small 
                                     style={{fontWeight: 500, cursor: 'pointer'}} 
                                     className="border border-info rounded-circle bg-light m-0 p-2 text-capitalize"
