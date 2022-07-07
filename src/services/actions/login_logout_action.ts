@@ -74,7 +74,7 @@ export const login_user = (user_obj: any) => {
                     payload: {error: login_res?.message || "Something went wrong"},
                 });
             }
-        } catch (error: any) {
+        } catch (error: any) {            
             dispatch({
                 type: logged_in_failure,
                 payload: {error: error?.message || "Something went wrong"},

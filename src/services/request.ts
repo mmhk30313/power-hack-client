@@ -46,7 +46,7 @@ export const request = (link: String, params: any) => {let headers: any = {
     }).catch(
         function (error: any) {
           console.log('Show error notification!')
-          return Promise.reject(error);
+          return Promise.reject(error?.response?.data);
         }
     );
         

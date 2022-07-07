@@ -11,12 +11,14 @@ const Logout = () => {
     const handleLogout = () => {
         dispatch(logged_out());
         // history.push('/signup-login');
-        notification ['success'] ({
-            message: 'Logout Successfully',
-            description: 'You have been logged out successfully',
-            placement: 'topRight',
-            duration: 2
-        });
+        setTimeout(() => {
+            notification ['success'] ({
+                message: 'Logout Successfully',
+                description: 'You have been logged out successfully',
+                placement: 'topRight',
+                duration: 2
+            });
+        }, 1000);
     }
     return (
         <React.Fragment>

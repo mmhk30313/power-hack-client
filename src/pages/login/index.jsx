@@ -30,7 +30,7 @@ const Login = () => {
             // history.push('/');
         }
         if(!is_logged_in && error){
-            setErrorMessage(error);
+            setErrorMessage(message || error);
             notification.error({
                 message: 'Error',
                 description: error,
